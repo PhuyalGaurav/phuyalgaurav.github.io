@@ -2091,11 +2091,12 @@ input, select, textarea {
 
 			.image.thumb:hover:after {
 				opacity: 1.0;
+				filter: blur(1px);-webkit-filter: blur(1px);
 			}
 
 			.image.thumb:hover:before {
 				background: url("images/overlay.png"), url("images/overlay.png");
-				opacity: 1.0;
+				opacity: 1.0;filter: blur(1px);-webkit-filter: blur(1px);
 			}
 
 		.image img {
