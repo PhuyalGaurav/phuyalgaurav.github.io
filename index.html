@@ -81,7 +81,50 @@
 				<!-- Three -->
 					<section id="three">
 						<h2>Get In Touch !</h2>
-						<p>Your message will go to my e-mail. And i will reply as soon as possible.</p>
+						<h3>Use instant message : </h3>
+						<div class="instant-message">
+							<form onsubmit="sendContact(event)">
+								<div class="col-12"><textarea name="message" id="messageinstant" placeholder="Instant Message" rows="2"></textarea></div>
+								<br>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" style="border-color: rgb(44, 16, 27);"/></li>
+								</ul>
+							</form>
+							<script>
+								async function sendContact(ev) {
+								  ev.preventDefault();
+						  
+								  const message = document
+									.getElementById('messageinstant').value;
+								  const webhookBody = {
+									embeds: [{
+									  title: 'Contact Form Submitted',
+									  fields: [
+										{ name: 'Sender', value: message },
+									  ]
+									}],
+								  };
+						  
+								  const webhookUrl = 'https://discord.com/api/webhooks/1146657748189184040/hytYruyt2gv-UhX5YySjqYX2BjuIpVgwqVqKM8pFlVehVnVxeN1DBQNKVB07mUCcLFMY';
+						  
+								  const response = await fetch(webhookUrl, {
+									method: 'POST',
+									headers: {
+									  'Content-Type': 'application/json',
+									},
+									body: JSON.stringify(webhookBody),
+								  });
+						  
+								  if (response.ok) {
+									alert('Instant Message Recieved !');
+								  } else {
+									alert('There was an error! Try again later!');
+								  }
+								}
+							  </script>
+						</div>
+						<hr>
+						<h3>Or subbmit a form : </h3>
 						<div class="row">
 							<div class="col-8 col-12-small">
 								<form method="post" action="https://formsubmit.co/phuyalgaurav90@gmail.com">
@@ -92,6 +135,7 @@
 										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
 										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
 									</div>
+									<br>
 									<ul class="actions">
 										<li><input type="submit" value="Send Message" style="border-color: rgb(194, 169, 218);"/></li>
 									</ul>
