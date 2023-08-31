@@ -84,7 +84,7 @@
 						<h3>Use instant message : </h3>
 						<div class="instant-message">
 							<form onsubmit="sendContact(event)">
-								<div class="col-12"><textarea name="message" id="messageinstant" placeholder="Instant Message" rows="2"></textarea></div>
+								<div class="col-12"><textarea name="message" id="messageinstant" placeholder="Instant Message" rows="1"></textarea></div>
 								<br>
 								<ul class="actions">
 									<li><input type="submit" value="Send Message" style="border-color: rgb(44, 16, 27);"/></li>
@@ -94,13 +94,13 @@
 								async function sendContact(ev) {
 								  ev.preventDefault();
 						  
-								  const message = document
-									.getElementById('messageinstant').value;
+								  const message = document.getElementById('messageinstant').value;
+								  const ping = '<@572936387473440768>'
 								  const webhookBody = {
 									embeds: [{
-									  title: 'Contact Form Submitted',
+									  title: 'Contact Form Submit',
 									  fields: [
-										{ name: 'Sender', value: message },
+										{ name: 'Sender', value: message.concat(" ",ping) },
 									  ]
 									}],
 								  };
