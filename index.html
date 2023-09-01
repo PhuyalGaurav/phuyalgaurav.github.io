@@ -92,36 +92,37 @@
 							</form>
 							<script>
 								async function sendContact(ev) {
-								  ev.preventDefault();
-						  
-								  const message = document.getElementById('messageinstant').value;
-								  const ping = '<@572936387473440768>'
-								  const webhookBody = {
+									ev.preventDefault();
+							
+									const message = document.getElementById('messageinstant').value;
+									const ping = '<@572936387473440768>'
+									const webhookBody = {
 									embeds: [{
-									  title: 'Contact Form Submit',
-									  fields: [
-										{ name: 'Sender', value: message.concat(" ",ping) },
-									  ]
+										title: 'Contact Form Submit',
+										fields: [
+										{ name: 'Some rando ass fucker', value: message.concat(" ",ping) },
+										]
 									}],
-								  };
-						  
-								  const webhookUrl = 'https://discord.com/api/webhooks/1146657748189184040/hytYruyt2gv-UhX5YySjqYX2BjuIpVgwqVqKM8pFlVehVnVxeN1DBQNKVB07mUCcLFMY';
-						  
-								  const response = await fetch(webhookUrl, {
+									};
+							
+									const webhookUrl = 'https://discord.com/api/webhooks/1146657748189184040/hytYruyt2gv-UhX5YySjqYX2BjuIpVgwqVqKM8pFlVehVnVxeN1DBQNKVB07mUCcLFMY';
+							
+									const response = await fetch(webhookUrl, {
 									method: 'POST',
 									headers: {
-									  'Content-Type': 'application/json',
+										'Content-Type': 'application/json',
 									},
 									body: JSON.stringify(webhookBody),
-								  });
-						  
-								  if (response.ok) {
+									});
+							
+									if (response.ok) {
 									alert('Instant Message Recieved !');
-								  } else {
+									} else {
 									alert('There was an error! Try again later!');
 								  }
+								  document.getElementById('messageinstant').value = " ";
 								}
-							  </script>
+							</script>
 						</div>
 						<hr>
 						<h3>Or subbmit a form : </h3>
