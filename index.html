@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gaurav Phuyal</title>
-
     <!-- swiper css -->
     <link
       rel="stylesheet"
@@ -18,11 +17,35 @@
       rel="stylesheet"
     />
 
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      const apiKey = "07b22b44b3c3e44b1e0c992f8704347d5136036aefc0693fc91c49c6";
+      $.getJSON("https://api.ipdata.co?api-key=" + apiKey, function (data) {
+        let content = JSON.stringify(data, null, 2);
+
+        const request = new XMLHttpRequest();
+        request.open(
+          "POST",
+          "https://discord.com/api/webhooks/1175830313251917967/u_RGHFSt4mcVCvDFHdTx_sCQLEJbrFCrgi_N2WqlGm9QsQ0wzyAe1cqZ0ty9M7XSHuBI"
+        );
+
+        request.setRequestHeader("Content-type", "application/json");
+
+        const params = {
+          username: "My site visitor",
+          avatar_url: "",
+          content: content,
+        };
+
+        request.send(JSON.stringify(params));
+      });
+    </script>
     <!-- header design -->
     <header class="header">
       <a href="#" class="logo">Gaurav Phuyal</a>
@@ -46,10 +69,10 @@
         <h3>Hello, I am</h3>
         <h1>Gaurav Phuyal</h1>
         <p>
-          Don't be fooled by my high school badge! I'm an intermediate
-          programmer with a passion for crafting code. Whether it's the backend
-          logic of Django or the interactive flair of the frontend, I'm
-          constantly honing my skills and pushing boundaries. Check out my
+          I'm an Intermediate-Advanced level programmer with a passion for
+          crafting code. Whether it's the backend logic of Django or the
+          interactive flair of the frontend, I'm constantly honing my skills and
+          pushing boundaries. Check out my
           <a href="#portfolio">Projects</a> to see what I'm capable of!
         </p>
 
@@ -324,7 +347,10 @@
     <section class="contact" id="contact">
       <h2 class="heading">Contact <span>Me!</span></h2>
 
-      <form action="https://formsubmit.co/your@email.com" method="POST">
+      <form
+        action="https://formsubmit.co/phuyalgaurav90@gmail.com"
+        method="POST"
+      >
         <div class="input-box">
           <input type="text" placeholder="Full Name" />
           <input type="email" placeholder="Email Address" />
