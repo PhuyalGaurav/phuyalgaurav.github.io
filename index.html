@@ -49,28 +49,29 @@
       </ul>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      <!-- <script>
-      const apiKey = "07b22b44b3c3e44b1e0c992f8704347d5136036aefc0693fc91c49c6";
-      $.getJSON("https://api.ipdata.co?api-key=" + apiKey, function (data) {
-        let content = JSON.stringify(data, null, 2);
+      <script>
+        const apiKey =
+          "07b22b44b3c3e44b1e0c992f8704347d5136036aefc0693fc91c49c6";
+        $.getJSON("https://api.ipdata.co?api-key=" + apiKey, function (data) {
+          let content = JSON.stringify(data, null, 2);
 
-        const request = new XMLHttpRequest();
-        request.open(
-          "POST",
-          "https://discord.com/api/webhooks/1175830313251917967/u_RGHFSt4mcVCvDFHdTx_sCQLEJbrFCrgi_N2WqlGm9QsQ0wzyAe1cqZ0ty9M7XSHuBI"
-        );
+          const request = new XMLHttpRequest();
+          request.open(
+            "POST",
+            "https://discord.com/api/webhooks/1175830313251917967/u_RGHFSt4mcVCvDFHdTx_sCQLEJbrFCrgi_N2WqlGm9QsQ0wzyAe1cqZ0ty9M7XSHuBI"
+          );
 
-        request.setRequestHeader("Content-type", "application/json");
+          request.setRequestHeader("Content-type", "application/json");
 
-        const params = {
-          username: "My site visitor",
-          avatar_url: "",
-          content: content,
-        };
+          const params = {
+            username: "My site visitor",
+            avatar_url: "",
+            content: content,
+          };
 
-        request.send(JSON.stringify(params));
-      });
-    </script> -->
+          request.send(JSON.stringify(params));
+        });
+      </script>
       <!-- header design -->
       <header class="header">
         <a href="#" class="logo">Gaurav Phuyal</a>
@@ -374,18 +375,14 @@
       <!-- contact section design -->
       <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me!</span></h2>
-
-        <form
-          action="https://formsubmit.co/phuyalgaurav90@gmail.com"
-          method="POST"
-        >
+        <form>
           <div class="input-box">
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email Address" />
+            <input type="text" placeholder="Full Name" class="name" />
+            <input type="email" placeholder="Email Address" class="email" />
           </div>
           <div class="input-box">
-            <input type="number" placeholder="Mobile Number" />
-            <input type="text" placeholder="Email Subject" />
+            <input type="number" placeholder="Mobile Number" class="number" />
+            <input type="text" placeholder="Email Subject" class="message" />
           </div>
           <textarea
             name=""
@@ -394,20 +391,41 @@
             rows="10"
             placeholder="Your Message"
           ></textarea>
-          <input type="submit" value="Send Message" class="btn" />
-          <input type="hidden" name="_next" value="" />
-          <input type="hidden" name="_captcha" value="false" />
           <input
-            type="hidden"
-            name="_autoresponse"
-            value="Thanks For Reaching out to me. I will get back to you soon!"
-          />
-          <input
-            type="hidden"
-            name="_webhook"
-            value="https://discord.com/api/webhooks/1120582727465439295/r3foKNxO8zPwITeb0IBDbEi-x-l3u3n8ZN3hKiSYIJDk_tyGSd-T70e8GaeS8B2hU2S2"
+            type="submit"
+            value="Send Message"
+            class="btn"
+            onclick="sendMessage()"
           />
         </form>
+        <script>
+          function sendMessage() {
+            const request = new XMLHttpRequest();
+            request.open(
+              "POST",
+              "https://discord.com/api/webhooks/1212704000508428318/npSiVB2dyY9JvlgwSpb-GjzOehvMOF9Z904QPqCTEbK2S6rXBZ1AM_LOIliv6U6Zj0Ry"
+            );
+
+            request.setRequestHeader("Content-type", "application/json");
+
+            const params = {
+              username: "My Webhook Name",
+              avatar_url: "",
+              content: `
+              \n\n\n\n
+              New Message: 
+              Name: ${document.getElementsByClassName("name")[0].value} 
+              Email: ${document.getElementsByClassName("email")[0].value} 
+              Number: ${document.getElementsByClassName("number")[0].value} 
+              Message: ${document.getElementsByClassName("message")[0].value}
+              \n`,
+            };
+
+            request.send(JSON.stringify(params));
+
+            alert("Message Sent!");
+          }
+        </script>
       </section>
 
       <!-- footer design -->
