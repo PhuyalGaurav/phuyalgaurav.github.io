@@ -1,3 +1,6 @@
+<script>
+  window.location.href = "https://cui.gaurav.rocks";
+</script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,7 +62,7 @@
       </ul>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      <script>
+      <!-- <script>
         const apiKey =
           "07b22b44b3c3e44b1e0c992f8704347d5136036aefc0693fc91c49c6";
         $.getJSON("https://api.ipdata.co?api-key=" + apiKey, function (data) {
@@ -81,7 +84,7 @@
 
           request.send(JSON.stringify(params));
         });
-      </script>
+      </script> -->
       <!-- header design -->
       <header class="header">
         <a href="#" class="logo">Gaurav Phuyal</a>
@@ -111,21 +114,7 @@
             and pushing boundaries. Check out my
             <a href="#portfolio">Projects</a> to see what I'm capable of!
           </p>
-
-          <div class="social-media">
-            <a href="https://www.facebook.com/phuyalgaurav90"
-              ><i class="bx bxl-facebook"></i
-            ></a>
-            <a href="https://www.instagram.com/phuyalgaurav90/"
-              ><i class="bx bxl-instagram-alt"></i
-            ></a>
-            <a href="https://www.linkedin.com/in/gaurav-phuyal-922b53288/"
-              ><i class="bx bxl-linkedin"></i
-            ></a>
-            <a href="https://www.youtube.com/channel/UCkzCCnvI2NalpwsAjKuFDtw"
-              ><i class="bx bxl-youtube"></i
-            ></a>
-          </div>
+          <br />
 
           <a href="https://github.com/PhuyalGaurav" class="btn"
             >Checkout my github!</a
@@ -384,29 +373,45 @@
 
       <!-- contact section design -->
       <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me!</span></h2>
-        <form>
+        <h2 class="heading">
+          Contact <span>Me!</span
+          ><img
+            src="https://cdn3.emoji.gg/emojis/9738-discord-ico.png"
+            width="30px"
+            height="30px"
+            alt="discord_ico"
+          />
+        </h2>
+
+        <form onsubmit="sendMessage()">
           <div class="input-box">
-            <input type="text" placeholder="Full Name" class="name" />
-            <input type="email" placeholder="Email Address" class="email" />
+            <input type="text" placeholder="Full Name" class="name" required />
+            <input
+              type="email"
+              placeholder="Email Address"
+              class="email"
+              required
+            />
           </div>
           <div class="input-box">
             <input type="number" placeholder="Mobile Number" class="number" />
-            <input type="text" placeholder="Email Subject" class="message" />
+            <input
+              type="text"
+              placeholder="Email Subject"
+              class="subject"
+              required
+            />
           </div>
           <textarea
+            class="message"
             name=""
             id=""
             cols="30"
             rows="10"
             placeholder="Your Message"
+            required
           ></textarea>
-          <input
-            type="submit"
-            value="Send Message"
-            class="btn"
-            onclick="sendMessage()"
-          />
+          <input type="submit" value="Send Message" class="btn" />
         </form>
         <script>
           function sendMessage() {
@@ -423,13 +428,22 @@
               avatar_url: "",
               content: `
               \n\n\n\n
-              New Message: 
-              Name: ${document.getElementsByClassName("name")[0].value} 
-              Email: ${document.getElementsByClassName("email")[0].value} 
-              Number: ${document.getElementsByClassName("number")[0].value} 
-              Message: ${document.getElementsByClassName("message")[0].value}
+              **New Message from ${
+                document.getElementsByClassName("name")[0].value
+              }**
+              **Email:** ${document.getElementsByClassName("email")[0].value} 
+              **Number:** ${document.getElementsByClassName("number")[0].value} 
+              **Subject:** ${
+                document.getElementsByClassName("subject")[0].value
+              }
+              \`\`\`${document.getElementsByClassName("message")[0].value}\`\`\`
               \n`,
             };
+            document.getElementsByClassName("name")[0].value = "";
+            document.getElementsByClassName("email")[0].value = "";
+            document.getElementsByClassName("number")[0].value = "";
+            document.getElementsByClassName("subject")[0].value = "";
+            document.getElementsByClassName("message")[0].value = "";
 
             request.send(JSON.stringify(params));
 
@@ -442,7 +456,7 @@
       <footer class="footer">
         <div class="footer-text">
           <p>Copyright &copy; Gaurav Phuyal 2024 | All Rights Reserved.</p>
-          <p>Phone: 9766915125</p>
+
           <p>Email: phuyalgaurav90@gmail.com</p>
         </div>
 
